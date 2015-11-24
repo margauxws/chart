@@ -8,33 +8,112 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.3.5/tabletop.min.js"></script>
     <script>
         $(function () {
-            var data = [{
-                name: 'X',
-                data: [1, 0, 4, 11, 5]
-            }, {
-                name: 'Y',
-                data: [5, 15, 3, 10, 6]
-            }, {
-              name: 'Z',
-                data: [5, 7, 3, 1, 6]
-            }];
 
-            $('#container').highcharts({
+          $('#container').highcharts({
                 chart: {
+                    type: 'bubble',
                     polar: true
                 },
                 title: {
                     text: 'Hours Worked'
                 },
-                xAxis: {
-                    categories: ["plastic","metal","wood","foam", "orange"]
+                Axis: {
+            gridLineWidth: 1,
+            title: {
+                text: 'Daily fat intake'
+            },
+            labels: {
+                format: '{value} gr'
+            },
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 65,
+                label: {
+                    align: 'middle',
+                    rotation: 0,
+                    y: 15,
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    text: 'Variable Material Usage Productivity'
                 },
-                yAxis: {
-                    title: {
-                        text: 'Materials Used'
-                    }
+                zIndex: 3
+            }]
+        },
+
+        yAxis: {
+            startOnTick: false,
+            endOnTick: false,
+            title: {
+                text: 'hours worked'
+            },
+            labels: {
+                format: '{value} h'
+            },
+            maxPadding: 0.2,
+            plotLines: [{
+                color: 'black',
+                dashStyle: 'dot',
+                width: 2,
+                value: 50,
+                label: {
+                    align: 'right',
+                    style: {
+                        fontStyle: 'italic'
+                    },
+                    text: 'Size based upon size of material',
+                    x: -10
                 },
-                series: data
+                zIndex: 3
+            }]
+      },
+      xAxis: { }
+      tooltip: {
+            useHTML: true,
+            headerFormat: '<table>',
+            pointFormat: '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
+                '<tr><th>Hours Spent:</th><td>{point.y} hr</td></tr>' +
+                '<tr><th>Size of Project :</th><td>{point.z} cubic ft</td></tr>',
+            footerFormat: '</table>',
+            followPointer: true
+        },
+
+      series: [{
+        name: "John",
+        data: [
+                { x: 0, y: 102.9, z: 14.7, name: 'Plastic' },
+                { x: 20, y: 91.5, z: 15.8, name: 'Metal' },
+                { x: 40, y: 102.5, z: 12, name: 'Foam' },
+                { x: 50, y: 86.1, z: 11.8, name: 'Wood' },
+                { x: 70, y: 70.1, z: 16.6, name: 'Orange' },
+        ]
+
+      },
+      {
+        name: "Beet",
+        data: [
+                { x: 0, y: 68.5, z: 14.5, name: 'Plastic' },
+                { x: 20, y: 83.1, z: 10, name: 'Metal' },
+                { x: 40, y: 93.2, z: 24.7, name: 'Foam' },
+                { x: 50, y: 57.6, z: 10.4, name: 'Wood' },
+                { x: 70, y: 20, z: 16, name: 'Orange'}
+        ]
+
+      },
+      {
+        name: "Radish",
+        data: [
+                { x: 10, y: 32, z: 14.5, name: 'Plastic' },
+                { x: 20, y: 64, z: 10, name: 'Metal' },
+                { x: 40, y: 25, z: 24.7, name: 'Foam' },
+                { x: 50, y: 10, z: 10.4, name: 'Wood' },
+                { x: 70, y: 18, z: 16, name: 'Orange' }
+        ]
+
+      }]
+
             });
         });
     </script>
